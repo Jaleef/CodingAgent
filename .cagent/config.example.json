@@ -1,0 +1,40 @@
+{
+  "provider": "deepseek",
+  "model": "deepseek-chat",
+  "permission": "workspace-write",
+  "limits": {
+    "maxStepsPerTurn": 40,
+    "turnTimeoutMs": 900000,
+    "toolTimeoutMs": 120000,
+    "maxToolOutputBytes": 32768,
+    "maxConcurrentTools": 8
+  },
+  "permissions": {
+    "autoApproveTools": ["read", "glob", "grep"],
+    "autoApproveShell": false,
+    "allowNetworkCommands": false
+  },
+  "compaction": {
+    "enabled": true,
+    "triggerRatio": 0.75,
+    "keepRecentTurns": 3,
+    "summarizerModel": null
+  },
+  "subagents": {
+    "enabled": true,
+    "maxConcurrent": 3,
+    "maxDepth": 1,
+    "timeoutMs": 600000,
+    "model": null
+  },
+  "mcp": {
+    "servers": {
+      "filesystem": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "."],
+        "trust": false
+      }
+    }
+  },
+  "debug": false
+}

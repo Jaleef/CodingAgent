@@ -1,0 +1,39 @@
+{
+  "name": "coding-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A learning-oriented coding agent harness (F0 skeleton)",
+  "license": "UNLICENSED",
+  "bin": {
+    "ca": "./dist/main.js",
+    "coding-agent": "./dist/main.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/build.mjs && node dist/main.js",
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "node --import ./scripts/sandbox-preload.mjs node_modules/vitest/vitest.mjs run",
+    "check:docs": "node scripts/check-docs.mjs",
+    "verify": "npm run typecheck && npm run lint && npm test && npm run check:docs && npm run build"
+  },
+  "dependencies": {
+    "ink": "^8.0.0",
+    "react": "^19.3.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "eslint": "^10.14.0",
+    "ink-testing-library": "^4.0.0",
+    "rolldown": "^1.3.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
+  }
+}

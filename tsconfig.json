@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    // 目标运行时是 Node 22+，编译产物由 tsup 打成单个 ESM 文件。
+    "target": "ES2023",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    // 这里选择 Bundler 而不是 NodeNext：本项目的唯一运行入口是 tsup 产物，
+    // 源码不会被 Node 直接加载，因此无需写 .js 后缀；这种配置对 tsx/vitest 最省心。
+    // 细节与取舍见 ARCHITECTURE.md 的「模块解析」一节。
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node"],
+    "noEmit": true
+  },
+  "include": ["src/**/*", "tests/**/*", "vitest.config.ts"]
+}
